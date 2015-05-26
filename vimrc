@@ -30,43 +30,39 @@ endif
 set t_Co=256
 
 " Vundle init
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 
 " Require Vundle
 try
-    call vundle#rc()
+    call vundle#begin()
 catch
     echohl Error | echo "Vundle is not installed. Run 'cd ~/.vim/ && git submodule init && git submodule update'" | echohl None
 endtry
 
 
 "{{{ Vundle Bundles!
-if exists(':Bundle')
-    Bundle 'gmarik/vundle'
+if exists(':Plugin')
+    Plugin 'gmarik/Vundle.vim'
 
-    " My Bundles here:
+    " My Plugins here:
     "
     " repos on github
-    Bundle 'Lokaltog/vim-easymotion'
-    Bundle 'scrooloose/nerdtree.git'
-    Bundle 'kien/ctrlp.vim'
-    Bundle 'joonty/vim-phpqa.git'
-    Bundle 'joonty/vim-phpunitqf.git'
-    Bundle 'joonty/vim-sauce.git'
-    Bundle 'joonty/vdebug.git'
-    Bundle 'joonty/vim-taggatron.git'
-    Bundle 'tpope/vim-fugitive.git'
-    Bundle 'tpope/vim-markdown.git'
-    Bundle 'ervandew/supertab.git'
-    Bundle 'scrooloose/syntastic.git'
-    Bundle 'joonty/vim-tork.git'
-    Bundle 'rking/ag.vim'
-    Bundle 'othree/html5.vim.git'
-    Bundle 'SirVer/ultisnips.git'
-    Bundle 'stephpy/vim-yaml.git'
-    Bundle 'bling/vim-airline.git'
+    Plugin 'Lokaltog/vim-easymotion'
+    Plugin 'scrooloose/nerdtree.git'
+    Plugin 'kien/ctrlp.vim'
+    Plugin 'joonty/vim-sauce.git'
+    Plugin 'joonty/vim-taggatron.git'
+    Plugin 'tpope/vim-fugitive.git'
+    Plugin 'tpope/vim-markdown.git'
+    Plugin 'scrooloose/syntastic.git'
+    Plugin 'rking/ag.vim'
+    Plugin 'othree/html5.vim.git'
+    Plugin 'SirVer/ultisnips.git'
+    Plugin 'bling/vim-airline.git'
 end
 "}}}
+
+call vundle#end()            " required
 
 filetype plugin indent on     " required!
 syntax enable
