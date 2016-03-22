@@ -66,7 +66,6 @@ call vundle#end()            " required
 
 filetype plugin indent on     " required!
 syntax enable
-colorscheme adaryn
 runtime macros/matchit.vim
 let g:EasyMotion_leader_key = '<Space>'
 
