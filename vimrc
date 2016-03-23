@@ -409,11 +409,6 @@ nnoremap <Leader>c :Gcommit -a<CR>i
 nnoremap <Leader>g :Git
 nnoremap <Leader>a :Git add %:p<CR>
 
-" Custom shortcuts for navigation
-nnoremap ∆ :m .+1<CR>==   " Alt-j - Move line down
-nnoremap ˚ :m .-2<CR>==   " Alt-j - Move line down
-nnoremap ˙ :tabp<CR>==    " Alt-h - move to previous tab
-nnoremap ¬ :tabn<CR>==    " Alt-l - move to next tab
 "}}}
 
 " Quick insert mode exit
@@ -441,8 +436,3 @@ hi StatusLine ctermbg=cyan ctermfg=black
 " Split right and below, more natural
 set splitright
 set splitbelow
-
-" Dbext profiles
-let g:dbext_default_profile_mysql_local = 'type=MYSQL:user=root:passwd=whatever:dbname=mysql:extra=-t'
-let g:dbext_default_profile_mysql_local_DBI = 'type=DBI:user=malakskywalker:passwd=5U3r0e6G967fS2I:driver=mysql:conn_parms=database=fabric;host=127.0.0.1;port=3307'
-let g:dbext_default_profile_mysql_local_ODBC = 'type=ODBC:user=root:passwd=whatever:dsnname=mysql'
