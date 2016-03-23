@@ -44,28 +44,30 @@ if exists(':Vundle')
     " let Vundle manage Vundle, required
     Plugin 'VundleVim/Vundle.vim'
 
-    " My Bundles here:
+    " My Plugins here:
     "
     " repos on github
-    Plugin 'tpope/vim-fugitive.git'
     Plugin 'Lokaltog/vim-easymotion'
-    Plugin 'scrooloose/nerdtree.git'
-    Plugin 'kien/ctrlp.vim'
-    Plugin 'joonty/vim-taggatron.git'
-    Plugin 'zhaocai/dbext.vim'
     Plugin 'SirVer/ultisnips.git'
     Plugin 'bling/vim-airline.git'
-    Plugin 'tacahiroy/ctrlp-funky'
     Plugin 'christoomey/vim-tmux-navigator'
+    Plugin 'joonty/vim-taggatron.git'
+    Plugin 'kien/ctrlp.vim'
+    Plugin 'othree/html5.vim.git'
+    Plugin 'scrooloose/nerdtree.git'
+    Plugin 'scrooloose/syntastic.git'
+    Plugin 'tacahiroy/ctrlp-funky'
+    Plugin 'tpope/vim-fugitive.git'
+    Plugin 'zhaocai/dbext.vim'
 end
 "}}}
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
+
 filetype plugin indent on     " required!
 
 syntax enable
-colorscheme adaryn
 runtime macros/matchit.vim
 let g:EasyMotion_leader_key = '<Space>'
 
