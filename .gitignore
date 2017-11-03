@@ -2,3 +2,4 @@
 bundle/*
 ftplugin/python/**/*.pyc
 .netrwhist
+tags
