@@ -53,15 +53,20 @@ if exists(':Vundle')
     Plugin 'itchyny/lightline.vim'
     Plugin 'christoomey/vim-tmux-navigator'
     Plugin 'joonty/vim-taggatron.git'
-    Plugin 'kien/ctrlp.vim'
+    " Plugin 'kien/ctrlp.vim'
     Plugin 'othree/html5.vim.git'
     Plugin 'scrooloose/nerdtree.git'
     Plugin 'scrooloose/syntastic.git'
-    Plugin 'tacahiroy/ctrlp-funky'
+    " Plugin 'tacahiroy/ctrlp-funky'
     Plugin 'tpope/vim-fugitive.git'
     Plugin 'zhaocai/dbext.vim'
     Plugin 'junegunn/fzf.vim'
     Plugin 'mileszs/ack.vim'
+    Plugin 'StanAngeloff/php.vim'
+    Plugin 'junegunn/goyo.vim'
+    Plugin 'ajmwagar/vim-deus'
+    Plugin 'majutsushi/tagbar'
+    Plugin 'vim-scripts/SyntaxAttr.vim'
 end
 "}}}
 
@@ -237,7 +242,7 @@ endfunction
 "{{{ Toggle relative and absolute line numbers
 function! LineNumberToggle()
   if(&relativenumber == 1)
-    set number
+    set norelativenumber
   else
     set relativenumber
   endif
@@ -399,7 +404,8 @@ nnoremap <Leader>p :CtrlP<CR>
 " fzf.vim
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>t :Tags<CR>
-nnoremap <Leader>b :Buffers<CR>
+nnoremap <C-b> :Buffers<CR>
+nnoremap <C-p> :Files<CR>
 
 " CtrlPFunky
 let g:ctrlp_funky_matchtype = 'path'
@@ -503,3 +509,60 @@ if executable('ag')
 endif
 
 nnoremap <leader>ft :Tags <C-R><C-W> <CR>
+
+" Solarized vim colors
+" let g:seoul256_light_background = 256
+" colo seoul256
+" let g:solarized_termcolors=256
+" colorscheme solarized
+" colorscheme candystripe
+set background=dark
+let g:deus_termcolors=256
+colorscheme deus
+
+" php.vim config
+" let g:php_syntax_extensions_enabled=1
+" let b:php_syntax_extensions_enabled=1
+" 
+" function! PhpSyntaxOverride()
+"   hi! def link phpDocTags  phpDefine
+"   hi! def link phpDocParam phpType
+" endfunction
+" 
+" augroup phpSyntaxOverride
+"   autocmd!
+"   autocmd FileType php call PhpSyntaxOverride()
+" augroup END
+
+set cursorline
+let g:goyo_width=155
+let g:goyo_height=100
+nnoremap <leader>y :Goyo <CR>
+
+function! s:goyo_enter()
+  silent !tmux set status off
+  silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  " ...
+endfunction
+
+function! s:goyo_leave()
+  silent !tmux set status on
+  silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  set showmode
+  set showcmd
+  set scrolloff=5
+  " ...
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+
+nnoremap <Esc>f :Ack! <CR>
+nnoremap <Esc>t :TagbarToggle <CR>
+
+set ssop-=options    " do not store global and local values in a session
+set ssop-=folds      " do not store folds
